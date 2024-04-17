@@ -1,0 +1,54 @@
+{% load static %}  
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign Up</title> <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">  
+    
+    <style>
+      fieldset {
+        width: 200px;
+        height: 350px;
+      }
+
+      .form-div {
+        position: fixed;
+        top: 40%;
+        left: 40%;
+      }
+
+      .error-message {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-div">
+        
+        {% for message in messages %}
+        <p class="error-message">
+          {{message}}
+        </p>
+        
+        {% endfor %}
+      <fieldset>
+        <h1>SIGN UP</h1>
+        <form action="register" method="POST">
+          {% csrf_token %}  <label for="username">Username</label><br>
+          <input type="text" name="username" id="username" placeholder="Enter username" /><br><br>
+          <label for="email">E-mail</label><br>
+          <input type="text" name="email" id="email" placeholder="Enter E-mail" /><br><br>
+          <label for="password">Password</label><br>
+          <input type="password" name="password" id="password" placeholder="Enter password" /><br><br>
+          <label for="password1">Repeat Password</label><br>
+          <input type="password" name="password1" id="password1" placeholder="Repeat Password" /><br><br>
+          <input type="submit" name="submit" id="submit" value="Sign Up" />  
+        </form>
+      </fieldset>
+    </div>
+  </body>
+</html>
